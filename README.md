@@ -224,19 +224,20 @@ Deployed version: [chat.langchain.com](https://chat.langchain.com)
 The app leverages LangChain's streaming support and async API to update the page in real time for multiple users.
 
 ## ✅ Running locally
+export PATH="/Users/yourname/.local/bin:$PATH"
 1. Install backend dependencies: `poetry install`.
 1. Make sure to enter your environment variables to configure the application:
 ```
-export OPENAI_API_KEY=
-export WEAVIATE_URL=
-export WEAVIATE_API_KEY=
-export RECORD_MANAGER_DB_URL=
+export OPENAI_API_KEY="519ac575-6f15-4b61-b471-f722b6a4be4f"
+export WEAVIATE_URL="https://b1ryjjt1rxw3fah3npwvw.c0.asia-southeast1.gcp.weaviate.cloud"
+export WEAVIATE_API_KEY="clhxN2k5QWxib0NBUUtaK19XQVFkck9hUkcyK0gyc09xT0JMb2luQnRXbDZSSWx5SWpFcWpWRVBIelhrPV92MjAw"
+export RECORD_MANAGER_DB_URL="postgresql://postgres.juscctcmqzhxxjhngxjr:fySdop-qafkir-cedcy7@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres"
 
 # for tracing
 export LANGCHAIN_TRACING_V2=true
 export LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
-export LANGCHAIN_API_KEY=
-export LANGCHAIN_PROJECT=
+export LANGCHAIN_API_KEY="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"
+export LANGCHAIN_PROJECT="h10-langchain-study"
 ```
 1. Run `python backend/ingest.py` to ingest LangChain docs data into the Weaviate vectorstore (only needs to be done once).
    1. You can use other [Document Loaders](https://python.langchain.com/docs/modules/data_connection/document_loaders/) to load your own data into the vectorstore.

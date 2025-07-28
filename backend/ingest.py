@@ -14,13 +14,14 @@ from langchain.utils.html import PREFIXES_TO_IGNORE_REGEX, SUFFIXES_TO_IGNORE_RE
 from langchain_community.vectorstores import Weaviate
 from langchain_core.embeddings import Embeddings
 from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import OllamaEmbeddings
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 def get_embeddings_model() -> Embeddings:
-    return OpenAIEmbeddings(model="text-embedding-3-small", chunk_size=200)
+    return OllamaEmbeddings(model="llama2-chinese:13b")     
 
 
 def metadata_extractor(meta: dict, soup: BeautifulSoup) -> dict:
@@ -142,7 +143,8 @@ def ingest_docs():
             doc.metadata["source"] = ""
         if "title" not in doc.metadata:
             doc.metadata["title"] = ""
-
+    logger.info("First document content type: %s", type(docs_transformed[0].page_content))
+    logger.info("First 100 chars: %s", docs_transformed[0].page_content[:100])
     indexing_stats = index(
         docs_transformed,
         record_manager,

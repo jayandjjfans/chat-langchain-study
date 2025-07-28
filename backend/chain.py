@@ -236,7 +236,8 @@ def create_chain(llm: LanguageModelLike, retriever: BaseRetriever) -> Runnable:
     )
 
 
-gpt_3_5 = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0, streaming=True)
+gpt_3_5 = ChatOpenAI(openai_api_base="https://ark.cn-beijing.volces.com/api/v3",
+    model="deepseek-r1-250528")
 claude_3_haiku = ChatAnthropic(
     model="claude-3-haiku-20240307",
     temperature=0,
